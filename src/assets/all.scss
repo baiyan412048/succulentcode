@@ -1,0 +1,47 @@
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "./helpers/dashboard";
+
+// GOOGLE FONT
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC|Noto+Serif+TC:900');
+
+body{
+  font-family: 'Noto Sans TC', sans-serif !important;
+  background-color: #eaffe9 !important;
+
+  .font-letter{
+    letter-spacing: 3px
+  }
+
+  .title-txt{
+    font-family: "Noto Serif TC", serif;
+  }
+
+  .cursor-pointer{
+    cursor: pointer;
+  }
+
+  .btn-pill{
+    border-radius: 500px !important;
+  }
+
+  .banner{
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .banner-fix{
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+
+  .nohover{
+    text-decoration: none !important;
+
+    &:hover{
+      text-decoration: none !important;
+    }
+  }
+}
