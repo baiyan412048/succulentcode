@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Indexnavbar from './IndexNavbar';
-import Indexfooter from './IndexFooter';
+import Indexnavbar from './IndexNavbar.vue';
+import Indexfooter from './IndexFooter.vue';
 
 export default {
   components: {

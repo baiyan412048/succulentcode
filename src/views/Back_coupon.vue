@@ -160,7 +160,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   data() {

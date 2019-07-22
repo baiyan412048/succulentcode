@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Sidebar from './BackSidebar';
-import Alert from './AlertMessage';
+import Sidebar from './BackSidebar.vue';
+import Alert from './AlertMessage.vue';
 
 export default {
   components: {

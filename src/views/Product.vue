@@ -16,9 +16,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import ProductSidebar from '../components/ProductSidebar';
-import ProductList from '../components/ProductList';
-import Mobilecart from '../components/Mobilecart';
+import ProductSidebar from '../components/ProductSidebar.vue';
+import ProductList from '../components/ProductList.vue';
+import Mobilecart from '../components/Mobilecart.vue';
 import Alert from '../components/AlertMessage.vue';
 
 export default {

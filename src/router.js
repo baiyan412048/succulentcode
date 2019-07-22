@@ -4,15 +4,6 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 export default new Router({
-  scrollBehavior(savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    }
-    return {
-      x: 0,
-      y: 0,
-    };
-  },
   routes: [{
     path: '*',
     redirect: 'login',
@@ -22,56 +13,62 @@ export default new Router({
     path: '/',
     redirect: 'index',
     component: () => import('./components/Succulent.vue'),
-    children: [{
-      name: 'Index', // 元件呈現的名稱
-      path: 'index', // 對應的虛擬路徑
-      component: () => import('./views/Index.vue'), // 對應的元件
-    },
-    {
-      name: 'Abousus',
-      path: 'abousus',
-      component: () => import('./views/Abousus.vue'),
-    },
-    {
-      name: 'Blog',
-      path: 'blog',
-      component: () => import('./views/Blog.vue'),
-    },
-    {
-      name: 'Product',
-      path: 'product',
-      component: () => import('./views/Product.vue'),
-    },
-    {
-      name: 'ProductPage',
-      path: 'product_page/:productId',
-      component: () => import('./views/ProductPage.vue'),
-    },
-    {
-      name: 'Giftpage',
-      path: 'giftpage',
-      component: () => import('./views/Giftpage.vue'),
-    },
-    {
-      name: 'Checkout1',
-      path: 'checkout_1',
-      component: () => import('./views/Checkout_step1.vue'),
-    },
-    {
-      name: 'Checkout2',
-      path: 'checkout_2/:orderId',
-      component: () => import('./views/Checkout_step2.vue'),
-    },
-    {
-      name: 'Checkout3',
-      path: 'checkout_3/:orderId',
-      component: () => import('./views/Checkout_step3.vue'),
-    },
-    {
-      name: 'CheckoutOrder',
-      path: 'checkout_order',
-      component: () => import('./views/CheckoutOrder.vue'),
-    },
+    children: [
+      {
+        name: 'Index', // 元件呈現的名稱
+        path: 'index', // 對應的虛擬路徑
+        component: () => import('./views/Index.vue'), // 對應的元件
+      },
+      {
+        name: 'Abousus',
+        path: 'abousus',
+        component: () => import('./views/Abousus.vue'),
+      },
+      {
+        name: 'Blog',
+        path: 'blog',
+        component: () => import('./views/Blog.vue'),
+      },
+      {
+        name: 'Product',
+        path: 'product',
+        component: () => import('./views/Product.vue'),
+      },
+      {
+        name: 'ProductPage',
+        path: 'product_page/:productId',
+        component: () => import('./views/ProductPage.vue'),
+      },
+      {
+        name: 'Giftpage',
+        path: 'giftpage',
+        component: () => import('./views/Giftpage.vue'),
+      },
+      {
+        name: 'Checkout1',
+        path: 'checkout_1',
+        component: () => import('./views/Checkout_step1.vue'),
+      },
+      {
+        name: 'Checkout2',
+        path: 'checkout_2/:orderId',
+        component: () => import('./views/Checkout_step2.vue'),
+      },
+      {
+        name: 'Checkout3',
+        path: 'checkout_3/:orderId',
+        component: () => import('./views/Checkout_step3.vue'),
+      },
+      {
+        name: 'CheckoutOrder',
+        path: 'checkout_order',
+        component: () => import('./views/CheckoutOrder.vue'),
+      },
+      {
+        name: 'NewOpen',
+        path: 'newopen',
+        component: () => import('./views/NewOpen.vue'),
+      },
     ],
   },
   {

@@ -52,28 +52,6 @@
           to="/checkout_1">結帳去～</router-link>
         </div>
       </div>
-      <div class="d-none d-md-block">
-        <hr>
-        <h6 class="text-dark my-3 font-weight-bold">
-          Tags
-          <i class="fas fa-tags"></i>
-        </h6>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>養護小技巧
-        </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>Q&A
-        </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>挑禮物
-        </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>多肉植物
-        </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>多肉行旅
-        </a>
-      </div>
     </div>
   </div>
 </template>

@@ -245,7 +245,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/Pagination.vue';
 import Alert from '../components/AlertMessage.vue';
 
 export default {

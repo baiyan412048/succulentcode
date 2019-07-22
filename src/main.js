@@ -36,6 +36,11 @@ new Vue({
   render: h => h(App),
 }).$mount('#app');
 
+// 跳轉時到頁面頂部
+router.afterEach(() => {
+  window.scrollTo(0, 0);
+});
+
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     const api = `${process.env.APIPATH}/api/user/check`;

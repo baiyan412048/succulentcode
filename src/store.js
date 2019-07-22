@@ -11,20 +11,12 @@ export default new Vuex.Store({
   strict: true,
   state: {
     isLoading: false,
-    category: 'all',
-    title: '所有商品',
     messages: [],
   },
   mutations: {
     /* eslint-disable no-param-reassign */
     LOADING(state, payload) {
       state.isLoading = payload;
-    },
-    TITLE(state, payload) {
-      state.title = payload;
-    },
-    CATEGORY(state, payload) {
-      state.category = payload;
     },
     UPDATAMESSAGES(state, payload) {
       state.messages.push({
@@ -49,20 +41,6 @@ export default new Vuex.Store({
     updateLoading(context, payload) {
       context.commit('LOADING', payload);
     },
-    assort(context, name) {
-      context.commit('CATEGORY', name);
-      if (name === 'hot') {
-        context.commit('TITLE', '熱門商品');
-      } else if (name === 'all') {
-        context.commit('TITLE', '所有商品');
-      } else if (name === 'bsize') {
-        context.commit('TITLE', '大型多肉');
-      } else if (name === 'ssize') {
-        context.commit('TITLE', '多肉植物');
-      } else {
-        context.commit('TITLE', '多肉盆栽');
-      }
-    },
     updateMessage(context, { message, status }) {
       const timestamp = Math.floor(new Date() / 1000);
       context.commit('UPDATAMESSAGES', { timestamp, message, status });
@@ -79,8 +57,6 @@ export default new Vuex.Store({
   },
   getters: {
     isLoading: state => state.isLoading,
-    title: state => state.title,
-    category: state => state.category,
     messages: state => state.messages,
   },
   modules: {

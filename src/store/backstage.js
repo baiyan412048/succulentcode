@@ -56,6 +56,7 @@ export default ({
         context.commit('LOADING', false, { root: true });
         context.commit('COUPONS', response.data.coupons);
         context.commit('PAGINATION', response.data.pagination);
+        console.log(response.data.coupons, context.state.coupons);
       });
     },
     openCouponModal(context, { isNew, item }) {
@@ -77,21 +78,32 @@ export default ({
       $('#couponModal').modal('show');
     },
     updateCoupon(context, tempCoupon) {
-      context.commit('TEMPCOUPON', tempCoupon);
+      const coupon = tempCoupon;
+      context.commit('TEMPCOUPON', coupon);
       let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon`;
       let httpMethod = 'post';
       if (!context.state.isNew) {
-        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${context.state.coupons.id}`;
+        api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${context.state.tempCoupon.id}`;
         httpMethod = 'put';
       }
       axios[httpMethod](api, { data: context.state.tempCoupon }).then((response) => {
         $('#couponModal').modal('hide');
         if (response.data.success) {
-          context.dispatch('updateMessage', { message: '已新增優惠劵', status: 'orange' }, { root: true });
-          context.dispatch('getCoupons');
-        } else {
-          context.dispatch('updateMessage', { message: '新增優惠劵失敗', status: 'danger' }, { root: true });
-          context.dispatch('getCoupons');
+          if (httpMethod === 'post') {
+            context.dispatch('updateMessage', { message: '已新增優惠劵', status: 'orange' }, { root: true });
+            context.dispatch('getCoupons');
+          } else {
+            context.dispatch('updateMessage', { message: '已修改優惠劵', status: 'orange' }, { root: true });
+            context.dispatch('getCoupons');
+          }
+        } else if (!response.data.success) {
+          if (httpMethod === 'post') {
+            context.dispatch('updateMessage', { message: '新增優惠劵失敗', status: 'danger' }, { root: true });
+            context.dispatch('getCoupons');
+          } else {
+            context.dispatch('updateMessage', { message: '修改優惠劵失敗', status: 'danger' }, { root: true });
+            context.dispatch('getCoupons');
+          }
         }
       });
     },
@@ -152,6 +164,7 @@ export default ({
           price: item.price,
           description: item.description,
           is_enabled: item.is_enabled,
+          id: item.id,
         };
         context.commit('TEMPPRODUCT', product);
         context.commit('ISNEW', false);
@@ -168,7 +181,7 @@ export default ({
       if (!context.state.isNew) {
         api = `${process.env.VUE_APP_APIPATH}/api/${
           process.env.VUE_APP_CUSTOMPATH
-        }/admin/product/${context.state.products.id}`;
+        }/admin/product/${context.state.tempProduct.id}`;
         httpMethod = 'put';
       }
       context.commit('LOADING', true, { root: true });
@@ -176,11 +189,21 @@ export default ({
         context.commit('LOADING', false, { root: true });
         $('#productsModal').modal('hide');
         if (response.data.success) {
-          context.dispatch('updateMessage', { message: '已成功新增商品', status: 'orange' }, { root: true });
-          context.dispatch('getProducts');
-        } else {
-          context.dispatch('updateMessage', { message: '新增商品失敗', status: 'danger' }, { root: true });
-          context.dispatch('getProducts');
+          if (httpMethod === 'post') {
+            context.dispatch('updateMessage', { message: '已成功新增商品', status: 'orange' }, { root: true });
+            context.dispatch('getProducts');
+          } else {
+            context.dispatch('updateMessage', { message: '已成功更改商品', status: 'orange' }, { root: true });
+            context.dispatch('getProducts');
+          }
+        } else if (!response.data.success) {
+          if (httpMethod === 'post') {
+            context.dispatch('updateMessage', { message: '新增商品失敗', status: 'danger' }, { root: true });
+            context.dispatch('getProducts');
+          } else {
+            context.dispatch('updateMessage', { message: '修改商品失敗', status: 'danger' }, { root: true });
+            context.dispatch('getProducts');
+          }
         }
       });
     },
@@ -201,7 +224,7 @@ export default ({
           context.dispatch('getProducts');
         } else {
           $('#delProductModal').modal('hide');
-          context.dispatch('updateMessage', { message: `刪除商品失敗 ${response.data} `, status: 'danger' }, { root: true });
+          context.dispatch('updateMessage', { message: `刪除商品失敗 ${response.data.message} `, status: 'danger' }, { root: true });
           context.dispatch('getProducts');
         }
       });

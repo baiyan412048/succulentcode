@@ -7,15 +7,15 @@
       </h6>
       <ul class="row flex-md-column meun p-0 no-gutters justify-content-center">
         <li class="meun-list text-dark px-3 py-2 h6 mr-2 mr-md-0"
-        @click="assort('hot')">熱門商品</li>
+        @click="assort('熱門商品')">熱門商品</li>
         <li class="meun-list text-dark px-3 py-2 h6 mr-2 mr-md-0"
-        @click="assort('all')">所有商品</li>
+        @click="assort('所有商品')">所有商品</li>
         <li class="meun-list text-dark px-3 py-2 h6 mr-2 mr-md-0"
-        @click="assort('bsize')">大型多肉</li>
+        @click="assort('大型多肉')">大型多肉</li>
         <li class="meun-list text-dark px-3 py-2 h6 mr-2 mr-md-0"
-        @click="assort('ssize')">小型多肉</li>
+        @click="assort('小型多肉')">小型多肉</li>
         <li class="meun-list text-dark px-3 py-2 h6 mr-2 mr-md-0"
-        @click="assort('potted')">多肉盆栽</li>
+        @click="assort('多肉盆栽')">多肉盆栽</li>
         <router-link
         class="meun-list text-dark px-3 py-2 h6 mr-2 mr-md-0"
         to="/giftpage">客製禮品</router-link>
@@ -71,20 +71,29 @@
           Tags
           <i class="fas fa-tags"></i>
         </h6>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>養護小技巧
+        <a href="#" class="badge badge-warning mr-2 mb-2"
+          @click.prevent="tagSelet('送禮首選')">
+          <i class="fas fa-tag mr-2"></i>送禮首選
         </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>Q&A
+        <a href="#" class="badge badge-warning mr-2 mb-2"
+          @click.prevent="tagSelet('好照顧')">
+          <i class="fas fa-tag mr-2"></i>好照顧
         </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>挑禮物
+        <a href="#" class="badge badge-warning mr-2 mb-2"
+          @click.prevent="tagSelet('桌上型盆栽')">
+          <i class="fas fa-tag mr-2"></i>桌上型盆栽
         </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>多肉植物
+        <a href="#" class="badge badge-warning mr-2 mb-2"
+          @click.prevent="tagSelet('室外大型植物')">
+          <i class="fas fa-tag mr-2"></i>室外大型植物
         </a>
-        <a href="#" class="badge badge-warning mr-2 mb-2">
-          <i class="fas fa-tag mr-2"></i>多肉行旅
+        <a href="#" class="badge badge-warning mr-2 mb-2"
+          @click.prevent="tagSelet('開運盆栽')">
+          <i class="fas fa-tag mr-2"></i>開運盆栽
+        </a>
+        <a href="#" class="badge badge-warning mr-2 mb-2"
+          @click.prevent="tagSelet('慶開幕')">
+          <i class="fas fa-tag mr-2"></i>慶開幕
         </a>
       </div>
     </div>
@@ -161,7 +170,10 @@ export default {
       vm.showProducts = item;
     },
     assort(name) {
-      this.$store.dispatch('assort', name); // 'productsModules',
+      this.$store.dispatch('cartsModule/assort', name);
+    },
+    tagSelet(tag) {
+      this.$store.dispatch('cartsModule/tagSelet', tag);
     },
     ...mapActions('cartsModule', ['getCart']),
   },
@@ -169,7 +181,7 @@ export default {
     this.getCart();
   },
   computed: {
-    ...mapGetters('cartsModule', ['cartList']),
+    ...mapGetters('cartsModule', ['cartList', 'title', 'tag', 'category']),
   },
 };
 </script>

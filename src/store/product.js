@@ -5,8 +5,7 @@ export default ({
   namespaced: true,
   state: {
     products: [],
-    product: {
-    },
+    product: {},
   },
   mutations: {
     /* eslint-disable no-param-reassign */

@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="d-flex align-items-center mt-3 mb-4">
-      <div class="h4 mb-0 mr-auto text-dark">{{ title }}</div>
+      <div class="h4 mb-0 mr-auto text-dark">{{ category }}</div>
       <div>
         <button
           class="showbtn btn btn-outline-warning ml-2"
@@ -24,7 +24,7 @@
       <div
         class="col-md-4 col-12 mb-3 text-dark detail"
         :class="{'sellout-box':item.is_enabled === 0}"
-        v-show="title === item.category || category === 'all'"
+        v-show="title === item.category || item.description.indexOf(tag) > '-1' || title === '所有商品'"
         v-for="item in products"
         :key="item.id"
       >
@@ -58,7 +58,7 @@
         <li
           class="row mb-3 on-hover no-gutters list"
           :class="{'sellout-list':item.is_enabled === 0}"
-          v-show="title === item.category || category === 'all'"
+          v-show="title === item.category || item.description.indexOf(tag) > '-1' || title === '所有商品'"
           v-for="item in products"
           :key="item.id"
         >
@@ -71,11 +71,10 @@
           <div class="col">
             <div class="row ml-1 p-3 no-gutters">
               <div class="col">
-                <div class="h5">{{item.title}}</div>
+                <div class="h5 cursor-pointer" @click="toProductPage(item.id)">{{item.title}}</div>
                 <div
-                  class="samll mb-4 d-none d-md-block cursor-pointer"
-                  @click="toProductPage(item.id)">
-                  來自例朋至四：到多升處話然文聯期奇不其可變金破陽代。
+                  class="samll mb-4 d-none d-md-block">
+                  {{ item.description }}
                 </div>
                 <p class="mb-0">
                   <del class="text-secondary h6 mr-2">{{ item.origin_price | currency }}</del>
@@ -229,8 +228,8 @@ export default {
     this.getProducts();
   },
   computed: {
-    ...mapGetters(['category', 'title']),
     ...mapGetters('productsModule', ['products']),
+    ...mapGetters('cartsModule', ['category', 'title', 'tag']),
   },
 };
 </script>

@@ -7,11 +7,23 @@ export default ({
     cartList: {
       carts: {},
     },
+    category: '所有商品',
+    title: '所有商品',
+    tag: '慶開幕',
   },
   mutations: {
     /* eslint-disable no-param-reassign */
     CATRLIST(state, payload) {
       state.cartList = payload;
+    },
+    TITLE(state, payload) {
+      state.title = payload;
+    },
+    CATEGORY(state, payload) {
+      state.category = payload;
+    },
+    TAG(state, payload) {
+      state.tag = payload;
     },
     /* eslint-disable no-param-reassign */
   },
@@ -55,8 +67,42 @@ export default ({
         context.dispatch('getCart');
       });
     },
+    assort(context, name) {
+      context.commit('CATEGORY', name);
+      if (name === '熱門商品') {
+        context.commit('TITLE', '熱門商品');
+      } else if (name === '所有商品') {
+        context.commit('TITLE', '所有商品');
+      } else if (name === '大型多肉') {
+        context.commit('TITLE', '大型多肉');
+      } else if (name === '小型多肉') {
+        context.commit('TITLE', '小型多肉');
+      } else {
+        context.commit('TITLE', '多肉盆栽');
+      }
+      context.commit('TAG', '沒有商品');
+    },
+    tagSelet(context, tag) {
+      if (tag === '送禮首選') {
+        context.commit('TAG', tag);
+      } else if (tag === '好照顧') {
+        context.commit('TAG', tag);
+      } else if (tag === '桌上型盆栽') {
+        context.commit('TAG', tag);
+      } else if (tag === '室外大型植物') {
+        context.commit('TAG', tag);
+      } else if (tag === '開運盆栽') {
+        context.commit('TAG', tag);
+      } else {
+        context.commit('TAG', tag);
+      }
+      context.commit('TITLE', '');
+    },
   },
   getters: {
     cartList: state => state.cartList,
+    title: state => state.title,
+    category: state => state.category,
+    tag: state => state.tag,
   },
 });

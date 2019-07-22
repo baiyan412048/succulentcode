@@ -59,28 +59,6 @@
                 <router-link class="btn btn-block btn-grass" to="/checkout_1">結帳去～</router-link>
               </div>
             </div>
-            <div class="d-none d-md-block">
-              <hr>
-              <h6 class="text-dark my-3 font-weight-bold">
-                Tags
-                <i class="fas fa-tags"></i>
-              </h6>
-              <a href="#" class="badge badge-warning mr-2 mb-2">
-                <i class="fas fa-tag mr-2"></i>養護小技巧
-              </a>
-              <a href="#" class="badge badge-warning mr-2 mb-2">
-                <i class="fas fa-tag mr-2"></i>Q&A
-              </a>
-              <a href="#" class="badge badge-warning mr-2 mb-2">
-                <i class="fas fa-tag mr-2"></i>挑禮物
-              </a>
-              <a href="#" class="badge badge-warning mr-2 mb-2">
-                <i class="fas fa-tag mr-2"></i>多肉植物
-              </a>
-              <a href="#" class="badge badge-warning mr-2 mb-2">
-                <i class="fas fa-tag mr-2"></i>多肉行旅
-              </a>
-            </div>
           </div>
         </div>
         <!-- 商品區塊 -->
@@ -101,8 +79,8 @@
               <h2 class="h4 mb-4 text-dark">{{ product.title }}</h2>
               <p class="mb-2 text-secondary">——</p>
               <p
-                class="small text-secondary"
-              >來自例朋至四：到多升處話然文聯期奇不其可變金破陽代，率電興為轉內驗實。開太人間包就益己心代，說生產、上行西她居文世非大嚴企下光為真叫出市下在論性年命。</p>
+                class="text-secondary"
+              >{{ product.description }}</p>
               <div class="row mt-5 text-dark">
                 <div class="col-5 d-flex align-items-end">
                   <del class="h6 mb-0">原價 {{ product.origin_price | currency }} 元</del>
@@ -250,7 +228,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import Mobilecart from '../components/Mobilecart';
+import Mobilecart from '../components/Mobilecart.vue';
 import Alert from '../components/AlertMessage.vue';
 
 export default {

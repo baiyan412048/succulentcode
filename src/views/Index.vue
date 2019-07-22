@@ -46,7 +46,7 @@
           <div class="h2 mb-4">一起享受被綠色環繞的療癒</div>
           <div class="mb-5">當你需要的時候，在自己最喜歡的角落，也有可以療癒自己的綠色。</div>
           <router-link class="btn btn-sm btn-outline-dark btn-pill ml-auto"
-          to="/products">來去逛逛</router-link>
+          to="/product">來去逛逛</router-link>
         </div>
       </div>
     </section>
@@ -145,14 +145,12 @@
 
     <section class="container my-5">
       <div class="row no-gutters font-letter justify-content-center">
-        <div
-          class="col-md-6 col-12 p-5 h5
-          d-flex flex-column align-items-star bg-info banner salebanner-free"
-        ></div>
-        <div
-          class="col-md-6 col-12 p-5 h5
-          d-flex flex-column align-items-center bg-success banner salebanner-gift"
-        ></div>
+        <router-link class="col-md-6 col-12 p-5 h5
+          d-flex flex-column align-items-star
+          bg-info banner salebanner-free" to="/newopen"></router-link>
+        <router-link class="col-md-6 col-12 p-5 h5
+          d-flex flex-column align-items-star
+          bg-info banner salebanner-gift" to="/giftpage"></router-link>
       </div>
     </section>
   </div>

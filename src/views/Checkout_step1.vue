@@ -135,7 +135,7 @@
                 @click="addCupon"
               >套用優惠碼</button>
             </div>
-            <p class="ml-2 mt-1 text-orange">慶開店！ 只要輸入： open ，即可立即享7折優惠！</p>
+            <p class="ml-2 mt-1 text-orange">慶開店！ 只要輸入： newopen168 ，即可立即享7折優惠！</p>
           </div>
         </div>
         <div class="col-md col-12">
